@@ -1,0 +1,25 @@
+#header h1 {
+  text-align: center;
+}
+
+#header h3 {
+  text-align: center;
+}
+
+#header img {
+  height: 40px;
+  margin: auto;
+  width: 40px;
+}
+
+#contactIcons{
+  margin: auto;
+  width: 90px;
+}
+
+#projects {
+  height: 1000px;
+  width: 800px;
+  margin: auto;
+  padding-top: 100px;
+}
