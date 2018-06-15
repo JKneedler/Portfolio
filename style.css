@@ -1,6 +1,7 @@
 body {
   background-color: #F5F5F5;
   margin: 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 a:link {
@@ -8,17 +9,28 @@ a:link {
 }
 
 #header {
-  margin-top: 130px;
-  margin-bottom: 10px;
+  margin-top: 100px;
+  margin-bottom: 20px;
 }
 
 #header h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 55px;
+  font-weight: normal;
+  margin-bottom: 0px;
+  color: #080F0F;
 }
 
 #header h3 {
   text-align: center;
+  font-size: 17px;
+  font-weight: normal;
+  margin-top: 15px;
+}
+
+#header a h3 {
+  text-decoration: none;
+  color: #080F0F;
 }
 
 #contactIcons img {
@@ -41,11 +53,6 @@ a:link {
   text-align: center;
 }
 
-#projects {
-  height: auto;
-  width: 100%;
-}
-
 #navBar {
   width: 100%;
   height: 60px;
@@ -53,14 +60,19 @@ a:link {
 }
 
 #navItems {
-  width: 335px;
+  width: 650px;
   margin: auto;
+  list-style-type: none;
 }
 
 .navItem {
   text-align: center;
   display: inline-block;
-  font-size: 25px;
+  font-size: 20px;
+  width: 150px;
+  margin: 0px;
+  padding: 0px;
+  float: left;
 }
 
 .navItem p {
@@ -76,6 +88,11 @@ a:link {
 
 .navItem:hover p {
   color: #080F0F;
+}
+
+#projects {
+  height: auto;
+  width: 100%;
 }
 
 #content {
@@ -110,7 +127,7 @@ a:link {
 #pastProjects {
   height: auto;
   margin: auto;
-  width: 908px;
+  width: 910px;
 }
 
 .project {
