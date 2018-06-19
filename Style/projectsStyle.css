@@ -34,6 +34,11 @@
   cursor: pointer;
 }
 
+.project h3 {
+  color: #080F0F;
+  font-size: 18px;
+}
+
 .projectImage {
   margin: auto;
   width: 200px;
