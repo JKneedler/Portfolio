@@ -1,0 +1,22 @@
+#informalEducations {
+  height: auto;
+  width: 800px;
+  margin: auto;
+}
+
+#formalEducations {
+  height: auto;
+  width: 800px;
+  margin: auto;
+}
+
+.education {
+  width: 100%;
+  height: 200px;
+  padding-top: 20px;
+}
+
+.education p {
+  text-align: center;
+  color: #080F0F;
+}

@@ -1,10 +1,21 @@
-#languages {
+#projects {
   height: auto;
-  width: 1220px;
+  width: 100%;
+}
+
+#currentProjects {
+  height: auto;
+  width: 610px;
   margin: auto;
 }
 
-.language {
+#pastProjects {
+  height: auto;
+  margin: auto;
+  width: 910px;
+}
+
+.project {
   width: 300px;
   height: 300px;
   padding-top: 50px;
@@ -13,16 +24,17 @@
   background-color: #F5F5F5;
 }
 
-.language p {
+.project p {
   text-align: center;
   color: #080F0F;
 }
 
-.language:hover {
+.project:hover {
   background-color: #EDEBED;
+  cursor: pointer;
 }
 
-.languageImage {
+.projectImage {
   margin: auto;
   width: 200px;
   height: 200px;

@@ -90,11 +90,6 @@ a:link {
   color: #080F0F;
 }
 
-#projects {
-  height: auto;
-  width: 100%;
-}
-
 #content {
   margin-top: 30px;
 }
@@ -116,37 +111,6 @@ a:link {
   height: 2px;
   margin: auto;
   background-color: #080F0F;
-}
-
-#currentProjects {
-  height: auto;
-  width: 610px;
-  margin: auto;
-}
-
-#pastProjects {
-  height: auto;
-  margin: auto;
-  width: 910px;
-}
-
-.project {
-  width: 300px;
-  height: 300px;
-  padding-top: 50px;
-  margin-top: 20px;
-  display: inline-block;
-  background-color: #F5F5F5;
-}
-
-.project p {
-  text-align: center;
-  color: #080F0F;
-}
-
-.project:hover {
-  background-color: #EDEBED;
-  cursor: pointer;
 }
 
 .iconPlaceHolder {
