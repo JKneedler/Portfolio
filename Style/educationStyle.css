@@ -20,3 +20,8 @@
   text-align: center;
   color: #080F0F;
 }
+
+.education a {
+  color: #080F0F;
+  text-decoration: underline;
+}
