@@ -1,5 +1,43 @@
 #explanation {
   padding-top: 30px;
-  width: 800px;
+  width: 600px;
   margin: auto;
+  font-size: 19px;
+  padding-bottom: 30px;
+}
+
+#currentProjects {
+  height: auto;
+  width: 610px;
+  margin: auto;
+}
+
+.project {
+  width: 300px;
+  height: 250px;
+  padding-top: 30px;
+  display: inline-block;
+  background-color: #F5F5F5;
+}
+
+.project p {
+  text-align: center;
+  color: #080F0F;
+}
+
+.project:hover {
+  background-color: #EDEBED;
+  cursor: pointer;
+}
+
+.project h3 {
+  color: #080F0F;
+  font-size: 18px;
+}
+
+.projectImage {
+  margin: auto;
+  width: 200px;
+  height: 200px;
+  display: block;
 }
