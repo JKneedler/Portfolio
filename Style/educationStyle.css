@@ -2,6 +2,7 @@
   height: auto;
   width: 800px;
   margin: auto;
+  padding-bottom: 30px;
 }
 
 #formalEducations {
@@ -19,6 +20,7 @@
 .education p {
   text-align: center;
   color: #080F0F;
+  font-size: 18px;
 }
 
 .education a {
