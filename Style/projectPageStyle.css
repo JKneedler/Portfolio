@@ -5,7 +5,12 @@
 }
 
 #summary {
-  width: 700px;
+  width: 1000px;
   margin: auto;
   padding-bottom: 30px;
+}
+
+#summary p {
+  width: 700px;
+  margin: auto;
 }
