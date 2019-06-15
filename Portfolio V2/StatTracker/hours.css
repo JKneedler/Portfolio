@@ -1,0 +1,118 @@
+#content {
+  height: auto;
+  padding-top: 115px;
+  padding-bottom: 50px;
+}
+
+.optionKeyButton {
+  position: fixed!important;
+  top: 80px;
+  height: 35px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-top: 1px solid gray;
+  z-index: 1;
+}
+
+.optionKeyButton p {
+  font-size: 25px;
+  margin: 0px;
+  text-align: center;
+}
+
+#optionKey {
+  position: fixed!important;
+  top: 115px;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  background-color: #e0e0e0;
+  display: none;
+}
+
+.keyExplanation {
+  width: 100%;
+  height: 20px;
+  padding-top: 5px;
+}
+
+.keyExplanation p {
+  margin: 0px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#hoursTable {
+  table-layout: fixed;
+  right: 0px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#hoursTable > tbody {
+  height: auto;
+}
+
+#hoursTable > tbody > tr {
+  height: 80px;
+  width: 100%;
+}
+
+.hourBlock {
+  right: 0px;
+  width: auto;
+  padding: 0px;
+}
+
+.hourLabel {
+  width: 20%;
+  padding: 0px;
+  border-bottom: 1px solid gray;
+}
+
+.hourlabel p {
+  margin-top: -35px;
+}
+
+.optionsTable {
+  table-layout: fixed;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.optionSelection {
+  height: 80px;
+  width: 100%;
+}
+
+.deleteX {
+  position: absolute;
+  right: 10px;
+  color: gray;
+  margin-top: 20px;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  z-index: 0;
+}
+
+.deleteX:hover {
+  color: white;
+}
+
+.option0 { background-color: #A6A6A6; }
+.option1 { background-color: #7030A0; }
+.option2 { background-color: #548235; }
+.option3 { background-color: #FFFF00; }
+.option4 { background-color: #0070C0; }
+.option5 { background-color: #00B0F0; }
+.option6 { background-color: #FF2600; }
+.option7 { background-color: #FF7C00; }
+.option8 { background-color: #404040; }
+.option9 { background-color: #0D0D0D; }
+.option10 { background-color: #30FA00; }
+.option11 { background-color: #FFACA9; }
+.option12 { background-color: #AB82FF; }
+.option13 { background-color: #7A4300; }

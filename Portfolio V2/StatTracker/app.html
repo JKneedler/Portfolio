@@ -1,0 +1,1030 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=3">
+    <title>Hours</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="signIn.css" />
+    <link rel="stylesheet" type="text/css" href="hours.css" />
+    <link rel="stylesheet" type="text/css" href="food.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="hours.js"></script>
+    <script src="food.js"></script>
+    <script src="signIn.js"></script>
+    <script src="dayController.js"></script>
+  </head>
+  <body>
+    <div id="logIn">
+      <div id="logInPopUp">
+        <p>Log In<p/><hr />
+        <p id="errorLabel"></p>
+        <input type="text" id="email" placeholder="Email" class="signInInput"/>
+        <input type="password" id="password" placeholder="Password" class="signInInput"/>
+        <button onclick="LogIn()" class="signInButton">Log In</button>
+        <button onclick="Back()" class="signInButton">Exit</button>
+      </div>
+    </div>
+    <div id="program" style="display: none">
+      <div id="tabPanel">
+        <table>
+          <tr>
+            <td onclick="OpenHours()">
+              <img src="slice1.png" />
+            </td>
+            <td onclick="OpenFood()">
+              <img src="slice2.png" />
+            </td>
+            <td onclick="OpenWorkout()">
+              <img src="slice3.png" />
+            </td>
+            <td onclick="OpenMoney()">
+              <img src="slice4.png" />
+            </td>
+            <td onclick="SignOut()">
+              <img src="slice5.png"
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="daySelector">
+        <table id="dayTable">
+          <tr>
+            <td style="text-align:left; padding-left: 12px;" onclick=ChangeDay(-1)><</td>
+            <td style="width: 75%;"><span id="dayLabel">Day</span><br><span id="monthYearLabel">Month, Year</span></td>
+            <td style="text-align:right; padding-right: 12px;" onclick=ChangeDay(1)>></td>
+          </tr>
+        </table>
+      </div>
+      <div id="hoursProgram">
+        <div id="content">
+          <div class="optionKeyButton" onclick=OpenKey()>
+            <p>&#9661;</p>
+          </div>
+          <div id="optionKey">
+            <div class="option0 keyExplanation">
+              <p>Sleep</p>
+            </div>
+            <div class="option1 keyExplanation">
+              <p>Family Time</p>
+            </div>
+            <div class="option2 keyExplanation">
+              <p>Friends/Social</p>
+            </div>
+            <div class="option3 keyExplanation">
+              <p>Dating</p>
+            </div>
+            <div class="option4 keyExplanation">
+              <p>Class</p>
+            </div>
+            <div class="option5 keyExplanation">
+              <p>Studying/Course Work</p>
+            </div>
+            <div class="option6 keyExplanation">
+              <p>Productive Time</p>
+            </div>
+            <div class="option7 keyExplanation">
+              <p>Programming/Game</p>
+            </div>
+            <div class="option8 keyExplanation">
+              <p style="color: white;">Down Time</p>
+            </div>
+            <div class="option9 keyExplanation">
+              <p style="color: white;">Wasted Time</p>
+            </div>
+            <div class="option10 keyExplanation">
+              <p>Exercise</p>
+            </div>
+            <div class="option11 keyExplanation">
+              <p>Transportation</p>
+            </div>
+            <div class="option12 keyExplanation">
+              <p>Health</p>
+            </div>
+            <div class="option13 keyExplanation">
+              <p style="color: white;">Paid Work</p>
+            </div>
+            <div class="optionKeyButton" onclick=CloseKey()>
+              <p style="height: 40px; margin-top: -10px;">&#9651;</p>
+            </div>
+          </div>
+          <table id="hoursTable">
+            <tr>
+              <td class="hourLabel"><p>12am</p></td>
+              <td class="hourBlock">
+                <div id="hour0">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>1am</p></td>
+              <td class="hourBlock">
+                <div id="hour1">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>2am</p></td>
+              <td class="hourBlock">
+                <div id="hour2">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>3am</p></td>
+              <td class="hourBlock">
+                <div id="hour3">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>4am</p></td>
+              <td class="hourBlock">
+                <div id="hour4">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>5am</p></td>
+              <td class="hourBlock">
+                <div id="hour5">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>6am</p></td>
+              <td class="hourBlock">
+                <div id="hour6">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>7am</p></td>
+              <td class="hourBlock">
+                <div id="hour7">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>8am</p></td>
+              <td class="hourBlock">
+                <div id="hour8">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>9am</p></td>
+              <td class="hourBlock">
+                <div id="hour9">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>10am</p></td>
+              <td class="hourBlock">
+                <div id="hour10">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>11am</p></td>
+              <td class="hourBlock">
+                <div id="hour11">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>12pm</p></td>
+              <td class="hourBlock">
+                <div id="hour12">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>1pm</p></td>
+              <td class="hourBlock">
+                <div id="hour13">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>2pm</p></td>
+              <td class="hourBlock">
+                <div id="hour14">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>3pm</p></td>
+              <td class="hourBlock">
+                <div id="hour15">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>4pm</p></td>
+              <td class="hourBlock">
+                <div id="hour16">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>5pm</p></td>
+              <td class="hourBlock">
+                <div id="hour17">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>6pm</p></td>
+              <td class="hourBlock">
+                <div id="hour18">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>7pm</p></td>
+              <td class="hourBlock">
+                <div id="hour19">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>8pm</p></td>
+              <td class="hourBlock">
+                <div id="hour20">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>9pm</p></td>
+              <td class="hourBlock">
+                <div id="hour21">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>10pm</p></td>
+              <td class="hourBlock">
+                <div id="hour22">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourLabel"><p>11pm</p></td>
+              <td class="hourBlock">
+                <div id="hour23">
+                  <table class="optionsTable">
+                    <tr>
+                      <td class="option0"><p>S</p></td>
+                      <td class="option1"><p>Fm</p></td>
+                      <td class="option2"><p>Fr</p></td>
+                      <td class="option3"><p>Gf</p></td>
+                      <td class="option4"><p>Cs</p></td>
+                      <td class="option5"><p>St</p></td>
+                      <td class="option6"><p>Pr</p></td>
+                    </tr>
+                    <tr>
+                      <td class="option7"><p>Cd</p></td>
+                      <td class="option8"><p>Dt</p></td>
+                      <td class="option9"><p>L</p></td>
+                      <td class="option10"><p>E</p></td>
+                      <td class="option11"><p>T</p></td>
+                      <td class="option12"><p>H</p></td>
+                      <td class="option13"><p>W</p></td>
+                    </tr>
+                  </table>
+                  <div style="display: none;" class="optionSelection"></div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="foodProgram">
+        <div id="totalFoodPeek">
+          <table id="fullDisplayTable">
+            <tr>
+              <td>
+                <table id="nutrientsTable">
+                  <tr style="border-bottom: 1px solid gray;">
+                    <td>
+                      <div style="position:relative; width: 100%; height: 100%;">
+                        <div id="calPeek" class="macroPeek">
+                        </div>
+                        <p id="calText">10</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table id="macrosTable">
+                        <tr>
+                          <td style="border-right: 1px solid gray;">
+                            <div style="position:relative; width: 100%; height: 100%;">
+                              <div id="carbPeek" class="macroPeek">
+                              </div>
+                              <p id="carbText">10</p>
+                            </div>
+                          </td>
+                          <td style="border-right: 1px solid gray;">
+                            <div style="position:relative; width: 100%; height: 100%;">
+                              <div id="fatPeek" class="macroPeek">
+                              </div>
+                              <p id="fatText">10</p>
+                            </div>
+                          </td>
+                          <td>
+                            <div style="position:relative; width: 100%; height: 100%;">
+                              <div id="proteinPeek" class="macroPeek">
+                              </div>
+                              <p id="proteinText">10</p>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td id="addFoodButton" onclick="openNewFoodWindow()">
+                <p>+</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="todayFoods">
+          <table id="foodTable" style="table-layout: fixed; width: 100%; height: auto;">
+            <tr id="testFoodRow" class="foodRow">
+              <td id="testFood" class="foodData">
+                <div class="foodDiv">
+                  <p><span class="foodTitle">Food Title</span>
+                  <span class="foodDetails">
+                    <br />
+                    C: <span class="carbAmt">10</span>
+                    F: <span class="fatAmt">10</span>
+                    P: <span class="proteinAmt">10</span>
+                  </span>
+                </p>
+                </div>
+              </td>
+              <td class="calData">
+                <div class="calDiv">
+                  <p>
+                    <span class="calAmt">100</span>
+                    <br />
+                    <span class="calLabel">cals</span>
+                  </p>
+                </div>
+              </td>
+              <td class="delCell">
+                <p>x</p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div id="newFoodWindow" style="display: none">
+          <div id="exitNewFood" onclick="exitNewFoodWindow()">
+            <p>x</p>
+          </div>
+          <div id="newFoodOptions">
+            <ul id="newFoodOptionsList">
+              <li class="newFoodOption" onclick="OpenCustomFoodPage()">
+                <p>Custom Food</p>
+              </li>
+              <hr />
+              <li class="newFoodOption" onclick="OpenMyFoodsPage()">
+                <p>My Foods</p>
+              </li>
+            </ul>
+          </div>
+          <div id="newCustomFood">
+            <table id="newCustomFoodTable">
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Food Name</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="text" id="foodNameInput" class="newFoodTextInput" placeholder="Name"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Serving Size</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="servingSizeInput" class="newFoodTextInput" placeholder="Size"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Serving Name</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="text" id="servingNameInput" class="newFoodTextInput" placeholder="Name"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Calories</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="caloriesInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Total Fat</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="totalFatInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Saturated Fat</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="satFatInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Trans Fat</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="transFatInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Monounsaturated Fat</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="monoFatInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Polyunsaturated Fat</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="polyFatInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Cholesterol</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="cholInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Sodium</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="sodiumInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Carbohydrates</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="carbsInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Fiber</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="fiberInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Sugar</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="sugarInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Protein</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="proteinInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+              <tr class="newFoodRow">
+                <td class="newFoodTextCell">
+                  <p>Potassium</p>
+                </td>
+                <td class="newFoodTextInputCell">
+                  <input type="number" id="potassiumInput" class="newFoodTextInput" placeholder="0"/>
+                </td>
+              </tr>
+            </table>
+            <button onclick="CreateNewFood()">Create Food</button>
+          </div>
+          <div id="newMyFood">
+            <p>My past custom foods</p>
+          </div>
+        </div>
+      </div>
+      <div id="workoutProgram">
+      </div>
+      <div id="moneyProgram">
+      </div>
+    </div>
+  </body>
+</html>

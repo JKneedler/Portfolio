@@ -1,0 +1,120 @@
+body {
+  background-color: #7e57c2;
+}
+
+#calNum {
+  font-size: 5rem;
+}
+
+#middleMain {
+  text-align: center;
+  padding-top: 100px;
+}
+
+#bBar {
+  position: fixed;
+  display: block;
+  bottom: 0px;
+  width: 100%;
+  max-width: 100%;
+  height: 250px;
+}
+
+#mainB {
+  width: 80px;
+  height: 80px;
+}
+
+#mainB i {
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  font-size: 2rem;
+}
+
+#foodB {
+  width: 80px;
+  height: 80px;
+}
+
+.showElement {
+  display: block!important;
+  visibility: visible!important;
+}
+
+.disableButton {
+  visibility: hidden!important;
+}
+
+.hideElement {
+  display: none!important;
+}
+
+#foodB i {
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  font-size: 2rem;
+}
+
+#buttons {
+  height: 300px;
+}
+
+#buttons a {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.nonMiddle {
+  padding-top: 150px;
+}
+
+#middle {
+  padding-top: 55px;
+}
+
+#header {
+  width: 100%;
+}
+
+.itemRow {
+  height: 80px;
+}
+
+.delItem {
+  width: 40px;
+}
+
+.itemAmt {
+  text-align: center;
+}
+
+#submitB {
+  position: fixed;
+  display: block;
+  bottom: 0px;
+  width: 100%;
+  max-width: 100%;
+  height: 100px;
+  background-color: #00C851;
+  left: 0px;
+}
+
+#fNameInputCon {
+  width: 50%;
+}
+
+#fCalInputCon {
+  width: 30%;
+}
+
+.fInputCon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fInput {
+  text-align: center;
+}

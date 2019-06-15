@@ -1,0 +1,66 @@
+body {
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#tabPanel {
+  position: fixed!important;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 50px;
+  bottom: 0px;
+  background-color: #e0e0e0;
+  z-index: 5;
+}
+
+#tabPanel table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  table-layout: fixed;
+  height: 100%;
+}
+
+#tabPanel img {
+  width: auto;
+  height: 30px;
+}
+
+#tabPanel td {
+  padding: 0px;
+  width: 50px;
+}
+
+#tabPanel td:hover {
+  background-color: white;
+}
+
+#daySelector {
+  height: 80px;
+  width: 100%;
+  background-color: #e0e0e0;
+  position: fixed!important;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+
+#dayTable {
+  width: 100%;
+  height: 80px;
+  table-layout: fixed;
+  text-align: center;
+}
+
+#dayTable td {
+  padding: 0px;
+}
+
+#dayLabel {
+  font-size: 40px;
+}
+
+#monthYearLabel {
+  font-size: 15px;
+}

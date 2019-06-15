@@ -1,0 +1,37 @@
+.container {
+  margin-top: 300px;
+  width: 500px;
+
+}
+
+#buttonGroup {
+  text-align: center;
+}
+
+#signUpChange {
+  margin-top: 10px;
+}
+
+#logInCard {
+  padding-bottom: 10px;
+}
+
+#logInButton {
+  width: 100px;
+}
+
+#buttonGroupSignUp {
+  text-align: center;
+}
+
+#logInChange {
+  margin-top: 10px;
+}
+
+#signUpCard {
+  padding-bottom: 10px;
+}
+
+#signUpButton {
+  width: 100px;
+}

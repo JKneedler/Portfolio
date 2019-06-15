@@ -1,0 +1,238 @@
+#foodProgram {
+  padding-top: 80px;
+}
+
+#totalFoodPeek {
+  position: fixed!important;
+  top: 80px;
+  height: 60px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
+#addFoodButton {
+  width: 80px;
+  text-align: center;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+#fullDisplayTable {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+#fullDisplayTable td {
+  padding: 0px;
+}
+
+#nutrientsTable {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+#macrosTable {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.macroPeek {
+  left: 0px;
+  position: relative;
+  height: 100%;
+}
+
+#calPeek {
+  background-color: #2ECC71;
+}
+
+#fatPeek {
+  background-color: #F5D76E;
+}
+
+#carbPeek {
+  background-color: #22A7F0;
+}
+
+#proteinPeek {
+  background-color: #EF4836;
+}
+
+#carbText {
+  position: relative;
+  margin-top: -28px;
+  text-align: center;
+}
+
+#calText {
+  position: relative;
+  margin-top: -28px;
+  text-align: center;
+}
+
+#fatText {
+  position: relative;
+  margin-top: -28px;
+  text-align: center;
+}
+
+#proteinText {
+  position: relative;
+  margin-top: -28px;
+  text-align: center;
+}
+
+
+
+#todayFoods {
+  margin-top: 60px;
+}
+
+.foodRow {
+  width: 100%;
+  height: 60px;
+}
+
+.foodData {
+
+}
+
+.foodData p {
+  margin: 0px;
+}
+
+.calData {
+  width: 15%;
+}
+
+.foodTitle {
+  font-size: 20px;
+}
+
+.foodDetails {
+  font-size: 15px;
+}
+
+.calDiv {
+  text-align: center;
+}
+
+.calLabel {
+  font-size: 15px;
+}
+
+.calAmt {
+  font-size: 20px;
+}
+
+.delCell {
+  width: 7%;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.delCell:hover {
+  color: black;
+}
+
+#newFoodWindow {
+  position: fixed!important;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #e0e0e0;
+  overflow-y: scroll;
+}
+
+#newFoodOptionsList {
+  list-style-type: none;
+}
+
+.newFoodOption {
+  background-color: inherit;
+  height: 30px;
+}
+
+.newFoodOption:hover {
+  color: white;
+}
+
+.newFoodOption p {
+  margin: 0px;
+}
+
+#newCustomFood {
+  display: none;
+}
+
+#newCustomFoodTable {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+  table-layout: fixed;
+}
+
+.newFoodRow {
+
+}
+
+.newFoodTextCell {
+  width: 40%;
+  border-bottom: 0px;
+}
+
+.newFoodTextCell p {
+  margin-left: 20px;
+  font-size: 12px;
+}
+
+.newFoodTextInputCell {
+  border-bottom: 1px solid gray;
+}
+
+.newFoodTextInput {
+  background-color: #e0e0e0;
+  outline: 0px;
+  border: 0px;
+  font-size: 12px;
+}
+
+.newFoodTextInput:hover {
+
+}
+
+#newMyFood {
+  display: none;
+}
+
+
+
+
+
+
+#exitNewFood {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: black;
+}
+
+#exitNewFood:hover {
+  color: white;
+}
+
+#exitNewFood p {
+  margin: 0px;
+  font-size: 40px;
+}

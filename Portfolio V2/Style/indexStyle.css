@@ -1,0 +1,30 @@
+  #headerJ {
+  background-image: url("../Media/headerBG.jpg");
+  position: absolute !important;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  padding-top: 15px;
+  margin-top: 70px;
+  z-index: -1;
+}
+
+#content {
+  z-index: 1;
+  position: absolute;
+  top: 700px;
+  padding: 0px;
+}
+
+.infoSection {
+  width: 100%;
+  text-align: center;
+  z-index: 0;
+}
+
+#eduCat {
+  background-color: lightblue;
+}
