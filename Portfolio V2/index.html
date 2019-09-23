@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Jared Kneedler</title>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -25,22 +25,11 @@
         <a class="navbar-brand" href="#">
           <img src="Media/JKlogo.png" height="40" alt="">
         </a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                      <a class="nav-link black-text" href="#aboutMe">About Me</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link black-text" href="#projects">Projects</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link black-text" href="#education">Education</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link black-text" href="#contact">Contact</a>
-                  </li>
-              </ul>
-          </div>
+        <a class="nav-link black-text" href="#aboutMe">About Me</a>
+        <a class="nav-link black-text" href="#projects">Projects</a>
+        <a class="nav-link black-text" href="#experience">Experience</a>
+        <a class="nav-link black-text" href="#education">Education</a>
+        <a class="nav-link black-text" href="#contact">Contact</a>
       </nav>
 
   </header>
@@ -101,10 +90,10 @@
             <div class="card" style="width: 300px; display: inline-block; margin: 10px;">
 
               <!-- Card header -->
-              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <div class="card-header" role="tab" id="headingOne">
-                  <i class="fa fa-tree fa-5x m-5 green-text" aria-hidden="true"></i>
-                  <h5 class="mb-0 black-text">VR Outdoors Experience</h5>
+              <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="card-header" role="tab" id="headingTwo">
+                  <i class="fas fa-landmark fa-5x m-5 black-text" aria-hidden="true"></i>
+                  <h5 class="mb-0 black-text">City Manager</h5>
                   <br />
                 </div>
               </a>
@@ -115,10 +104,10 @@
             <div class="card" style="width: 300px; display: inline-block; margin: 10px;">
 
               <!-- Card header -->
-              <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                <div class="card-header" role="tab" id="headingTwo">
-                  <i class="fa fa-group fa-5x m-5 indigo-text" aria-hidden="true"></i>
-                  <h5 class="mb-0 black-text">Creators Connect</h5>
+              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <div class="card-header" role="tab" id="headingOne">
+                  <i class="fa fa-tree fa-5x m-5 green-text" aria-hidden="true"></i>
+                  <h5 class="mb-0 black-text">VR Outdoors Experience</h5>
                   <br />
                 </div>
               </a>
@@ -130,6 +119,16 @@
 
           <div>
             <!-- Card body -->
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
+              <div class="card-body" style="max-width: 60rem; margin-left: auto; margin-right: auto;">
+                <h3>Polis</h3>
+                <p>
+                  Polis is a classic city manager set in Ancient Greece.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card body -->
             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
               <div class="card-body" style="max-width: 60rem; margin-left: auto; margin-right: auto;">
                 <h3>VR Outdoors Experience</h3>
@@ -138,30 +137,6 @@
                   <br />
                   As for the outdoors part, the Mountaineers Club at OSU has become a large part of my life over the past year and a half. Joining this club has allowed me to travel across the country, numerous times, to experience the outdoors like never before. Teaching me a respect for the outdoors and the beauty that comes along with it, I wanted to focus the VR experience on trying to capture the true essence of the outdoors as accurately as I could.
                 </p>
-              </div>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
-              <div class="card-body" style="max-width: 60rem; margin-left: auto; margin-right: auto;">
-                <h3>Creators Connect</h3>
-                <p>
-                  Creators Connect is created to inspire, connect, and teach students all across campus to bring their projects and ideas to life. By allowing students to share their own projects, ideas, and skills online, Creators Connect can help programmers and designers fill in their own gaps of knowledge through networking.
-                </p>
-                <h4>Creators Connect has three main functions: Connect, Share, and Learn.</h4>
-                <div style="max-width: 50rem; margin-left: auto; margin-right: auto;">
-                  <ul style="text-align: left">
-                    <li>
-                      <strong>Connect</strong>: Students can easily reach out to and team up with others through direct message, student look-up, or taking a look at their projects.
-                    </li>
-                    <li>
-                      <strong>Share</strong>: Students can easily share their past and current projects, including the skills that they have and the contributions they can make. They can also share ideas for projects, that can be used to find students to work with.
-                    </li>
-                    <li>
-                      <strong>Learn</strong>: Creators Connect can act as a "hub" of knowledge and resources for students to fill in any gaps they want filled. By allowing students to share resources and offer help on a wide array of topics from Java Programming to Character Animation, soon there will be nothing a team can't do.
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
           </div>
@@ -178,7 +153,7 @@
               <!-- Card header -->
               <a data-toggle="collapse" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                 <div class="card-header" role="tab" id="headingThree">
-                  <i class="fa fa-pie-chart fa-5x m-5 orange-text" aria-hidden="true"></i>
+                  <i class="far fa-chart-bar fa-5x m-5 orange-text" aria-hidden="true"></i>
                   <h5 class="mb-0 black-text">Stat Tracker</h5>
                   <br />
                 </div>
@@ -192,7 +167,7 @@
               <!-- Card header -->
               <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                 <div class="card-header" role="tab" id="headingFour">
-                  <i class="fa fa-calendar-o fa-5x m-5 blue-text" aria-hidden="true"></i>
+                  <i class="far fa-calendar-alt fa-5x m-5 blue-text" aria-hidden="true"></i>
                   <h5 class="mb-0 black-text">Google Calendar Clone</h5>
                   <br />
                 </div>
@@ -230,7 +205,7 @@
                 <p>
                   After being introduced to Firebase with the Google Calendar Clone, I got the opportunity to delve even deeper into understanding optimal database design. By using Firebase, in the future sometime, it would be quite simple to write a program to read and output the database to excel and quickly covert them to simpler forms of data representation. I was also able to, through Firebase, integrate an authentication system where only registered users can access the stat tracker, that way no one but I can change my own logged data.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Stat-Tracker"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Stat-Tracker"><i class="fab fa-github"></i></a>
               </div>
             </div>
 
@@ -244,7 +219,7 @@
                 <p>
                   After spending nearly a month learning the inner workings of Javascript in Web Development, I ended up with a Google Calendar Clone with a few features that I'm pretty proud of. While not being as beautifully designed as Google Calendar, I ended up learning a lot more about database design and implementation than I had originally thought.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/ReCal"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/ReCal"><i class="fab fa-github"></i></a>
               </div>
             </div>
           </div>
@@ -257,7 +232,7 @@
               <!-- Card header -->
               <a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                 <div class="card-header" role="tab" id="headingFive">
-                  <i class="fa fa-code-fork fa-5x m-5 deep-orange-text" aria-hidden="true"></i>
+                  <i class="fas fa-project-diagram fa-5x m-5 deep-orange-text" aria-hidden="true"></i>
                   <h5 class="mb-0 black-text">Machine Learning</h5>
                   <br />
                 </div>
@@ -299,7 +274,7 @@
                 <p>
                   I then moved on to a more complex machine learning algorithm known as back-propogation. This method uses matrix math and error adjusting to travel back through a neural network and change the weights and biases as it travels back. While being more complex, this method can result in much more accurate results. To complete these calculations optimally, a Matrix data representation was necessary. As I was creating this all from scratch, I used this opportunity to create a Matrix data representation filled with methods for addition, subtraction, multiplication, and many other operations.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Machine-Learning"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Machine-Learning"><i class="fab fa-github"></i></a>
               </div>
             </div>
 
@@ -313,7 +288,7 @@
                 <p>
                   As I was coming straight off of my Space Shooter project, the simple graphics and animations involved in a Euchre game were a great bonus. The best thing about this project, however, was the fact that 90% of the creation of the game was coding of the game system and round orders. Designing and implementing the classes involved in controlling the game, turns, and rounds was something that pushed me to really get a better mindset of proper class design.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Euchre"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Euchre"><i class="fab fa-github"></i></a>
               </div>
             </div>
 
@@ -364,7 +339,7 @@
                 <p>
                   The programming end of things for this project turned out to be much simpler than many of my other projects. However, what I learned about planning out and organizing a full game, I felt, was much more valuable. From designing each enemy and attack, to thinking up new bosses and special powers, this space shooter stretched my creativity more than anything else before. This increased creativity contributed greatly not only to new features and capabilities in my later projects, but also to finding new ways to do things I hadn't been able to before.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Space-Shooter"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Space-Shooter"><i class="fab fa-github"></i></a>
               </div>
             </div>
 
@@ -375,9 +350,9 @@
                 <p>
                   This "project" serves as a collection of the many attempts at new systems in various RPG projects that I've created over years.
                 </p>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Text-Based-RPG"><i class="fa fa-github"></i></a>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/ASCII"><i class="fa fa-github"></i></a>
-                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/SVXM"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/Text-Based-RPG"><i class="fab fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/ASCII"><i class="fab fa-github"></i></a>
+                <a type="button" class="btn-floating btn-lg btn-git" href="https://github.com/JKneedler/SVXM"><i class="fab fa-github"></i></a>
               </div>
             </div>
           </div>
@@ -385,6 +360,25 @@
         </div>
         <!--/.Accordion wrapper-->
 
+    </div>
+    <!--Jumbotron-->
+
+    <!--Jumbotron-->
+    <a name="experience"></a>
+    <div class="jumbotron text-center grey lighten-5" style="margin-bottom:0px!important; z-index: 100;">
+
+        <!--Title-->
+        <h1 class="card-title h2-responsive font-bold mt-3"><strong>Experience</strong></h1>
+        <hr class="my-4 pb-2" style="max-width: 50rem;">
+
+        <!--Text-->
+        <div class="justify-content-center">
+            <h3>Healthy Roster</h3>
+            <br />
+            <p>
+              Quick summary about position, what I did there, what I used and how the smaller company benefited me.
+            </p>
+        </div>
     </div>
     <!--Jumbotron-->
 
@@ -431,8 +425,8 @@
             <h2>Jared Kneedler</h2>
             <h3><a href="mailto:kneedler.jared@gmail.com">kneedler.jared@gmail.com</a></h3>
             <br />
-            <a href="https://www.linkedin.com/in/jared-k-05634a104/"><button type="button" class="btn btn-li"><i class="fa fa-linkedin pr-1"></i> Linkedin</button></a>
-            <a href="https://github.com/JKneedler"><button type="button" class="btn btn-git"><i class="fa fa-github pr-1"></i> Github</button></a>
+            <a href="https://www.linkedin.com/in/jared-k-05634a104/"><button type="button" class="btn btn-li"><i class="fab fa-linkedin pr-1"></i> Linkedin</button></a>
+            <a href="https://github.com/JKneedler"><button type="button" class="btn btn-git"><i class="fab fa-github pr-1"></i> Github</button></a>
         </div>
     </div>
     <!--Jumbotron-->
